@@ -19,7 +19,7 @@ public class EventService {
     private final String externalApiUrl;
 
     @Autowired
-    public EventService(@Value("${event.aggregation.application.api.url}") String externalApiUrl, RestTemplate restTemplate) {
+    public EventService(@Value("${event.aggregation.application.api.events.url}") String externalApiUrl, RestTemplate restTemplate) {
         this.externalApiUrl = externalApiUrl;
         this.restTemplate = restTemplate;
     }
