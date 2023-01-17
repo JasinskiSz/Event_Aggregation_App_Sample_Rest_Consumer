@@ -46,7 +46,6 @@ public class EventService {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error while getting events", e);
         }
 
-
         return Objects.requireNonNull(eventApiWrapper).getEventApiList();
     }
 }
