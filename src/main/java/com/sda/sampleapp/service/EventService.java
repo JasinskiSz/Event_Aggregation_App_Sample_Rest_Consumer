@@ -10,6 +10,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,6 +33,19 @@ public class EventService {
         } catch (RestClientException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error while getting events", e);
         }
+
+        return Objects.requireNonNull(eventApiWrapper).getEventApiList();
+    }
+
+    public List<EventApi> getEventsByDateRange(LocalDateTime start, LocalDateTime end) {
+        EventApiWrapper eventApiWrapper;
+
+        try {
+            eventApiWrapper = restTemplate.getForObject(externalApiUrl + "?start=" + start + "&end=" + end, EventApiWrapper.class);
+        } catch (RestClientException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error while getting events", e);
+        }
+
 
         return Objects.requireNonNull(eventApiWrapper).getEventApiList();
     }
