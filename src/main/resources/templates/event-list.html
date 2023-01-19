@@ -60,9 +60,13 @@
         <tbody>
         <tr th:each="event : ${events}">
             <td th:text="${event.title}"></td>
-            <td class="text-break" th:text="${event.description}"></td>
-            <td th:text="${event.startingDateTime}"></td>
-            <td th:text="${event.endingDateTime}"></td>
+            <td th:text="${event.description}"></td>
+            <div>
+            <td th:text="${#temporals.format(event.startingDateTime,
+                                      'dd-MM-yyyy HH:mm')}"></td>
+            </div>
+            <td th:text="${#temporals.format(event.endingDateTime,
+                                      'dd-MM-yyyy HH:mm')}"></td>
         </tr>
         </tbody>
     </table>
