@@ -13,6 +13,43 @@
     <title>Event list</title>
 </head>
 <body>
+<form class="nav-item d-flex"
+      method="get"
+      role="search"
+      th:action="@{/home}">
+
+    <div class="col-md-12">
+        <div class="form-floating mb-3">
+        <input class="form-control text-area-mt-15"
+               id="floatingStartDate"
+               placeholder="Staring date"
+               name="start"
+               type="datetime-local">
+        <label class="text-black" for="floatingStartDate">
+            Starting date and time
+        </label>
+    </div>
+        <div class="form-floating mb-3">
+            <input class="form-control text-area-mt-15"
+                   id="floatingEndDate"
+                   placeholder="Ending date"
+                   name="end"
+                   type="datetime-local">
+            <label class="text-black" for="floatingEndDate">
+                Ending date and time
+            </label>
+        </div>
+        <button class="btn btn-primary input-group-append"
+                type="submit">
+            Search
+        </button>
+
+    </div>
+
+
+
+</form>
+
 <div class="container">
     <table class="table table-striped">
         <thead>
