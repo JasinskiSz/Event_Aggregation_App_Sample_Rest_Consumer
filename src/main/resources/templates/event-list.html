@@ -13,7 +13,40 @@
     <title>Event list</title>
 </head>
 <body>
-<div class="container">
+<div class="h-100 d-flex align-items-center justify-content-center">
+    <form class="nav-item d-flex"
+          method="get"
+          role="search"
+          th:action="@{/home}">
+        <div class="navbar navbar-expand-lg">
+            <div class="form-floating mb-3 calendar-margin">
+                <input class="form-control text-area-mt-15"
+                       id="floatingStartDate"
+                       placeholder="Staring date"
+                       name="start"
+                       type="datetime-local">
+                <label class="text-black" for="floatingStartDate">
+                    Starting date and time
+                </label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control text-area-mt-15"
+                       id="floatingEndDate"
+                       placeholder="Ending date"
+                       name="end"
+                       type="datetime-local">
+                <label class="text-black" for="floatingEndDate">
+                    Ending date and time
+                </label>
+            </div>
+            <button class="btn btn-primary input-group-append"
+                    type="submit">
+                Search
+            </button>
+        </div>
+    </form>
+</div>
+<div class="container mx-sm-5">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -28,8 +61,12 @@
         <tr th:each="event : ${events}">
             <td th:text="${event.title}"></td>
             <td th:text="${event.description}"></td>
-            <td th:text="${event.startingDateTime}"></td>
-            <td th:text="${event.endingDateTime}"></td>
+            <div>
+            <td th:text="${#temporals.format(event.startingDateTime,
+                                      'dd-MM-yyyy HH:mm')}"></td>
+            </div>
+            <td th:text="${#temporals.format(event.endingDateTime,
+                                      'dd-MM-yyyy HH:mm')}"></td>
         </tr>
         </tbody>
     </table>
