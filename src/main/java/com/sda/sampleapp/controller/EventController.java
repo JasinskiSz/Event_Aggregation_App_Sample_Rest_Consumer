@@ -22,7 +22,6 @@ public class EventController {
         return "event-list";
     }
 
-    // Sample link to hit this: http://localhost:8888/?start=2022-01-01T00:00:00&end=2023-12-31T23:59:59
     @GetMapping(params = {"start", "end"})
     public String home(ModelMap map,
                        @RequestParam("start") LocalDateTime start,
